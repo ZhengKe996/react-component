@@ -1,21 +1,26 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, CSSProperties } from 'react'
 import classNames from 'classnames'
 import './index.css'
 
 interface ButtonProps {
   className?: string
-  type: 'normal' | 'primary'
+  type: 'normal' | 'primary' | 'dashed' | 'text' | 'link'
+  style?: CSSProperties
   children?: ReactNode
 }
 
 const Button = (props: ButtonProps) => {
-  const { className, type, children } = props
+  const { className, type, children, style } = props
   const cls = classNames({
-    'in-hzpt-btn': true,
-    [`in-hzpt-button-${type}`]: type,
+    'timu-btn': true,
+    [`timu-btn-${type}`]: type,
     [className as string]: !!className
   })
-  return <button className={cls}>{children}</button>
+  return (
+    <button className={cls} style={style}>
+      {children}
+    </button>
+  )
 }
 
 export default Button
