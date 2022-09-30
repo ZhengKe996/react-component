@@ -1,0 +1,28 @@
+import React, { ReactNode, CSSProperties, HTMLAttributes } from 'react'
+import classNames from 'classnames'
+import './index.scss'
+
+export interface {{componentName}}Props extends HTMLAttributes<HTMLElement> {
+  className?: string
+  type?: 'normal' | 'primary' | 'dashed' | 'text' | 'link'
+  size?: 'small' | 'medium' | 'large'
+  style?: CSSProperties
+  children?: ReactNode
+}
+
+const {{componentName}} = (props: {{componentName}}Props) => {
+  const { className, type = 'normal', size = 'medium', children, style, ...other } = props
+  const cls = classNames({
+    'timu-{{dirName}}': true,
+    [`timu-{{dirName}}-${type}`]: type,
+    [`timu-{{dirName}}-${size}`]: size,
+    [className as string]: !!className
+  })
+  return (
+    <button className={cls} style={style} {...other}>
+      {children}
+    </button>
+  )
+}
+
+export default {{componentName}}
