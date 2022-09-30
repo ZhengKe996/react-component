@@ -38,7 +38,7 @@ const Icon = (props: IconProps) => {
   const { className, type = 'fixed', size = 32, ...others } = props
 
   const cls = classNames({
-    'ant-icon': true,
+    'timu-icon': true,
     [className as string]: !!className
   })
 
