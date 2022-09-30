@@ -28,19 +28,19 @@ const style = {
 export const Basic = () => {
   return (
     <>
-      <Button type="primary" style={style}>
+      <Button type="primary" size="medium" style={style}>
         Primary Button
       </Button>
-      <Button type="normal" style={style}>
+      <Button type="normal" size="medium" style={style}>
         Default Button
       </Button>
-      <Button type="dashed" style={style}>
+      <Button type="dashed" size="medium" style={style}>
         Dashed Button
       </Button>
-      <Button type="text" style={style}>
+      <Button type="text" size="medium" style={style}>
         Text Button
       </Button>
-      <Button type="link" style={style}>
+      <Button type="link" size="medium" style={style}>
         Link Button
       </Button>
     </>
@@ -51,14 +51,14 @@ Secondary.args = {
   children: 'Button'
 }
 
-// export const Large = Template.bind({});
-// Large.args = {
-//   size: 'large',
-//   label: 'Button',
-// };
+export const Large = Template.bind({})
+Large.args = {
+  size: 'large',
+  children: 'Button'
+}
 
-// export const Small = Template.bind({});
-// Small.args = {
-//   size: 'small',
-//   label: 'Button',
-// };
+export const Small = Template.bind({})
+Small.args = {
+  size: 'small',
+  children: 'Button'
+}
