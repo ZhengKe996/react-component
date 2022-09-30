@@ -14,23 +14,28 @@ describe('Button', () => {
   })
 
   test('renders primary Button', () => {
-    const { container } = render(
-      <Button type="primary" size="medium">
-        click me
-      </Button>
-    )
+    const { container } = render(<Button type="primary">click me</Button>)
 
     // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
     expect(container.querySelector('.timu-btn-primary')).toBeInTheDocument()
   })
 
+  test('renders small Button', () => {
+    const { container } = render(<Button size="small">click me</Button>)
+
+    // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+    expect(container.querySelector('.timu-btn-small')).toBeInTheDocument()
+  })
+  test('renders large Button', () => {
+    const { container } = render(<Button size="large">click me</Button>)
+
+    // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+    expect(container.querySelector('.timu-btn-large')).toBeInTheDocument()
+  })
+
   test('should support click', () => {
     const onClick = jest.fn()
-    render(
-      <Button type="primary" size="medium" onClick={onClick}>
-        click me
-      </Button>
-    )
+    render(<Button onClick={onClick}>click me</Button>)
 
     const linkElement = screen.getByText(/click me/i)
     fireEvent.click(linkElement)
@@ -39,11 +44,7 @@ describe('Button', () => {
 
   test('should support blur', () => {
     const onBlur = jest.fn()
-    render(
-      <Button type="primary" size="medium" onBlur={onBlur}>
-        click me
-      </Button>
-    )
+    render(<Button onBlur={onBlur}>click me</Button>)
 
     const linkElement = screen.getByText(/click me/i)
     fireEvent.blur(linkElement)
@@ -52,11 +53,7 @@ describe('Button', () => {
 
   test('should support onMouseOver', () => {
     const onMouseOver = jest.fn()
-    render(
-      <Button type="primary" size="medium" onMouseOver={onMouseOver}>
-        click me
-      </Button>
-    )
+    render(<Button onMouseOver={onMouseOver}>click me</Button>)
 
     const linkElement = screen.getByText(/click me/i)
     fireEvent.mouseOver(linkElement)
@@ -65,11 +62,7 @@ describe('Button', () => {
 
   test('should support onFocus', () => {
     const onFocus = jest.fn()
-    render(
-      <Button type="primary" size="medium" onFocus={onFocus}>
-        click me
-      </Button>
-    )
+    render(<Button onFocus={onFocus}>click me</Button>)
 
     const linkElement = screen.getByText(/click me/i)
     fireEvent.focus(linkElement)

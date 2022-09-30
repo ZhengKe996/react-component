@@ -28,19 +28,19 @@ const style = {
 export const Basic = () => {
   return (
     <>
-      <Button type="primary" size="medium" style={style}>
+      <Button type="primary" style={style}>
         Primary Button
       </Button>
-      <Button type="normal" size="medium" style={style}>
+      <Button type="normal" style={style}>
         Default Button
       </Button>
-      <Button type="dashed" size="medium" style={style}>
+      <Button type="dashed" style={style}>
         Dashed Button
       </Button>
-      <Button type="text" size="medium" style={style}>
+      <Button type="text" style={style}>
         Text Button
       </Button>
-      <Button type="link" size="medium" style={style}>
+      <Button type="link" style={style}>
         Link Button
       </Button>
     </>

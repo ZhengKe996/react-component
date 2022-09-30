@@ -5,14 +5,14 @@ import '../index.css'
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   className?: string
-  type: 'normal' | 'primary' | 'dashed' | 'text' | 'link'
-  size: 'small' | 'medium' | 'large'
+  type?: 'normal' | 'primary' | 'dashed' | 'text' | 'link'
+  size?: 'small' | 'medium' | 'large'
   style?: CSSProperties
   children?: ReactNode
 }
 
 const Button = (props: ButtonProps) => {
-  const { className, type, size, children, style, ...other } = props
+  const { className, type = 'normal', size = 'medium', children, style, ...other } = props
   const cls = classNames({
     'timu-btn': true,
     [`timu-btn-${type}`]: type,
