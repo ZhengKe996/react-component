@@ -1,0 +1,1203 @@
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+/* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable */
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+$btn-prefix: '.timu-btn';
+
+@mixin innerA() {
+  > a:only-child {
+    color: currentColor;
+
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: transparent;
+      content: '';
+    }
+  }
+}
+
+@mixin button-type($primary, $border, $background) {
+  color: $primary;
+  border-color: $border;
+  background: $background;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+
+  @include innerA();
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    border-color: #40a9ff;
+    background: #40a9ff;
+
+    @include innerA();
+  }
+
+  &:active {
+    color: #fff;
+    border-color: #096dd9;
+    background: #096dd9;
+
+    @include innerA();
+  }
+
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: rgba(0, 0, 0, 0.25);
+      border-color: #d9d9d9;
+      background: #f5f5f5;
+      text-shadow: none;
+      box-shadow: none;
+
+      @include innerA();
+    }
+  }
+}
+
+#{$btn-prefix} {
+  line-height: 1.5715;
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  height: 32px;
+  padding: 4px 15px;
+  font-size: 14px;
+  border-radius: 2px;
+  color: rgba(0, 0, 0, 0.85);
+  border-color: #d9d9d9;
+  background: #fff;
+
+  > .anticon {
+    line-height: 1;
+  }
+
+  &,
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+
+  &:not([disabled]) {
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:active {
+      outline: 0;
+      box-shadow: none;
+    }
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+
+    > * {
+      pointer-events: none;
+    }
+  }
+
+  &-lg {
+    height: 40px;
+    padding: 6.4px 15px;
+    font-size: 16px;
+    border-radius: 2px;
+  }
+
+  &-sm {
+    height: 24px;
+    padding: 0px 7px;
+    font-size: 14px;
+    border-radius: 2px;
+  }
+
+  @include innerA();
+
+  &:hover,
+  &:focus {
+    color: #40a9ff;
+    border-color: #40a9ff;
+    background: #fff;
+
+    @include innerA();
+  }
+
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: rgba(0, 0, 0, 0.25);
+      border-color: #d9d9d9;
+      background: #f5f5f5;
+      text-shadow: none;
+      box-shadow: none;
+
+      @include innerA();
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    background: #fff;
+  }
+
+  & > span {
+    display: inline-block;
+  }
+
+  &-primary {
+    @include button-type(#fff, #1890ff, #1890ff);
+  }
+
+  &-group #{$btn-prefix}-primary {
+    &:not(:first-child):not(:last-child) {
+      border-right-color: #40a9ff;
+      border-left-color: #40a9ff;
+
+      &:disabled {
+        border-color: #d9d9d9;
+      }
+    }
+
+    &:first-child:not(:last-child) {
+      border-right-color: #40a9ff;
+
+      &[disabled] {
+        border-color: #d9d9d9;
+      }
+    }
+
+    &:last-child:not(:first-child),
+    + .timu-btn-primary {
+      border-left-color: #40a9ff;
+
+      &[disabled] {
+        border-left-color: #d9d9d9;
+      }
+    }
+  }
+
+  &-ghost {
+    @include button-type(rgba(0, 0, 0, 0.85), #d9d9d9, transparent);
+  }
+
+  &-dashed {
+    color: rgba(0, 0, 0, 0.85);
+    border-color: #d9d9d9;
+    background: #fff;
+    border-style: dashed;
+
+    @include innerA();
+
+    &:hover,
+    &:focus {
+      color: #40a9ff;
+      border-color: #40a9ff;
+      background: #fff;
+
+      @include innerA();
+    }
+
+    &:active {
+      color: #096dd9;
+      border-color: #096dd9;
+      background: #fff;
+
+      @include innerA();
+    }
+
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: rgba(0, 0, 0, 0.25);
+      border-color: #d9d9d9;
+      background: #f5f5f5;
+      text-shadow: none;
+      box-shadow: none;
+
+      @include innerA();
+    }
+  }
+
+  &-danger {
+    color: #fff;
+    border-color: #ff4d4f;
+    background: #ff4d4f;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+
+    @include innerA();
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      border-color: #ff7875;
+      background: #ff7875;
+
+      @include innerA();
+    }
+
+    &:active {
+      color: #fff;
+      border-color: #d9363e;
+      background: #d9363e;
+
+      @include innerA();
+    }
+
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: rgba(0, 0, 0, 0.25);
+      border-color: #d9d9d9;
+      background: #f5f5f5;
+      text-shadow: none;
+      box-shadow: none;
+
+      @include innerA();
+    }
+  }
+
+  &-link {
+    color: #1890ff;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+
+    @include innerA();
+
+    &:hover,
+    &:focus {
+      color: #40a9ff;
+      border-color: #40a9ff;
+      background: transparent;
+
+      @include innerA();
+    }
+
+    &:active {
+      color: #096dd9;
+      border-color: #096dd9;
+      background: transparent;
+
+      @include innerA();
+    }
+
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus,
+    &[disabled]:active {
+      color: rgba(0, 0, 0, 0.25);
+      border-color: #d9d9d9;
+      background: #f5f5f5;
+      text-shadow: none;
+      box-shadow: none;
+
+      @include innerA();
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: transparent;
+    }
+  }
+
+  &-text {
+    color: rgba(0, 0, 0, 0.85);
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+
+    @include innerA();
+
+    &:hover,
+    &:focus {
+      color: #40a9ff;
+      border-color: #40a9ff;
+      background: transparent;
+
+      @include innerA();
+    }
+
+    &:active {
+      color: #096dd9;
+      border-color: #096dd9;
+      background: transparent;
+
+      @include innerA();
+    }
+
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus,
+    &[disabled]:active {
+      color: rgba(0, 0, 0, 0.25);
+      border-color: #d9d9d9;
+      background: #f5f5f5;
+      text-shadow: none;
+      box-shadow: none;
+
+      @include innerA();
+    }
+
+    &:hover,
+    &:focus {
+      color: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.018);
+      border-color: transparent;
+    }
+
+    &:active {
+      color: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.028);
+      border-color: transparent;
+    }
+
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus,
+    &[disabled]:active {
+      color: rgba(0, 0, 0, 0.25);
+      border-color: transparent;
+      background: transparent;
+      text-shadow: none;
+      box-shadow: none;
+
+      @include innerA();
+    }
+  }
+
+  &-dangerous {
+    color: #ff4d4f;
+    border-color: #ff4d4f;
+    background: #fff;
+
+    @include innerA();
+
+    &:hover,
+    &:focus {
+      color: #ff7875;
+      border-color: #ff7875;
+      background: #fff;
+
+      @include innerA();
+    }
+
+    &:active {
+      color: #d9363e;
+      border-color: #d9363e;
+      background: #fff;
+
+      @include innerA();
+    }
+
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus,
+    &[disabled]:active {
+      color: rgba(0, 0, 0, 0.25);
+      border-color: #d9d9d9;
+      background: #f5f5f5;
+      text-shadow: none;
+      box-shadow: none;
+
+      @include innerA();
+    }
+
+    &#{$btn-prefix}-primary {
+      color: #fff;
+      border-color: #ff4d4f;
+      background: #ff4d4f;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+
+      @include innerA();
+
+      &:hover,
+      &:focus {
+        color: #fff;
+        border-color: #ff7875;
+        background: #ff7875;
+
+        @include innerA();
+      }
+
+      &:active {
+        color: #fff;
+        border-color: #d9363e;
+        background: #d9363e;
+
+        @include innerA();
+      }
+
+      &[disabled],
+      &[disabled]:hover,
+      &[disabled]:focus,
+      &[disabled]:active {
+        color: rgba(0, 0, 0, 0.25);
+        border-color: #d9d9d9;
+        background: #f5f5f5;
+        text-shadow: none;
+        box-shadow: none;
+
+        @include innerA();
+      }
+    }
+
+    &#{$btn-prefix}-link {
+      color: #ff4d4f;
+      border-color: transparent;
+      background: transparent;
+      box-shadow: none;
+
+      @include innerA();
+
+      &:hover,
+      &:focus {
+        color: #ff7875;
+        border-color: transparent;
+        background: transparent;
+
+        @include innerA();
+      }
+
+      &:active {
+        color: #d9363e;
+        border-color: transparent;
+        background: transparent;
+
+        @include innerA();
+      }
+
+      &[disabled],
+      &[disabled]:hover,
+      &[disabled]:focus,
+      &[disabled]:active {
+        color: rgba(0, 0, 0, 0.25);
+        border-color: transparent;
+        background: transparent;
+        text-shadow: none;
+        box-shadow: none;
+      }
+    }
+
+    &#{$btn-prefix}-text {
+      color: #ff4d4f;
+      border-color: transparent;
+      background: transparent;
+      box-shadow: none;
+
+      @include innerA();
+
+      &:hover,
+      &:focus {
+        color: #ff7875;
+        border-color: transparent;
+        background: rgba(0, 0, 0, 0.018);
+
+        @include innerA();
+      }
+
+      &:active {
+        color: #d9363e;
+        border-color: transparent;
+        background: rgba(0, 0, 0, 0.028);
+
+        @include innerA();
+      }
+
+      &[disabled],
+      &[disabled]:hover,
+      &[disabled]:focus,
+      &[disabled]:active {
+        color: rgba(0, 0, 0, 0.25);
+        border-color: transparent;
+        background: transparent;
+        text-shadow: none;
+        box-shadow: none;
+      }
+    }
+  }
+
+  &-icon-only {
+    width: 32px;
+    height: 32px;
+    padding: 2.4px 0;
+    font-size: 16px;
+    border-radius: 2px;
+    vertical-align: -3px;
+
+    > * {
+      font-size: 16px;
+    }
+
+    &.timu-btn-lg {
+      width: 40px;
+      height: 40px;
+      padding: 4.9px 0;
+      font-size: 18px;
+      border-radius: 2px;
+
+      > * {
+        font-size: 18px;
+      }
+    }
+
+    &.timu-btn-sm {
+      width: 24px;
+      height: 24px;
+      padding: 0px 0;
+      font-size: 14px;
+      border-radius: 2px;
+
+      > * {
+        font-size: 14px;
+      }
+    }
+
+    > .anticon {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &-round {
+    height: 32px;
+    padding: 4px 16px;
+    font-size: 14px;
+    border-radius: 32px;
+
+    &.timu-btn-lg {
+      height: 40px;
+      padding: 6.4px 20px;
+      font-size: 16px;
+      border-radius: 40px;
+    }
+
+    &.timu-btn-sm {
+      height: 24px;
+      padding: 0px 12px;
+      font-size: 14px;
+      border-radius: 24px;
+    }
+
+    &.timu-btn-icon-only {
+      width: auto;
+    }
+  }
+
+  &-circle {
+    min-width: 32px;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+    border-radius: 50%;
+
+    &.timu-btn-lg {
+      min-width: 40px;
+      border-radius: 50%;
+    }
+
+    &.timu-btn-sm {
+      min-width: 24px;
+      border-radius: 50%;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    z-index: 1;
+    display: none;
+    background: #fff;
+    border-radius: inherit;
+    opacity: 0.35;
+    transition: opacity 0.2s;
+    content: '';
+    pointer-events: none;
+  }
+
+  .anticon {
+    transition: margin-left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    &.anticon-plus > svg,
+    &.anticon-minus > svg {
+      shape-rendering: optimizeSpeed;
+    }
+  }
+
+  &-loading {
+    position: relative;
+    cursor: default;
+
+    &::before {
+      display: block;
+    }
+  }
+
+  & > .timu-btn-loading-icon {
+    transition: width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    .anticon {
+      padding-right: 8px;
+      -webkit-animation: none;
+      animation: none;
+
+      svg {
+        -webkit-animation: loadingCircle 1s infinite linear;
+        animation: loadingCircle 1s infinite linear;
+      }
+    }
+  }
+
+  & > .timu-btn-loading-icon:only-child .anticon {
+    padding-right: 0;
+  }
+
+  &-group {
+    position: relative;
+    display: inline-flex;
+
+    > .timu-btn,
+    > span > .timu-btn {
+      position: relative;
+
+      &:hover,
+      &:focus,
+      &:active {
+        z-index: 2;
+      }
+    }
+
+    > .timu-btn[disabled],
+    > span > .timu-btn[disabled] {
+      z-index: 0;
+    }
+
+    .timu-btn-icon-only {
+      font-size: 14px;
+    }
+
+    &-lg > .timu-btn,
+    &-lg > span > .timu-btn {
+      height: 40px;
+      padding: 6.4px 15px;
+      font-size: 16px;
+      border-radius: 0;
+    }
+
+    &-sm > .timu-btn,
+    &-sm > span > .timu-btn {
+      height: 24px;
+      padding: 0px 7px;
+      font-size: 14px;
+      border-radius: 0;
+    }
+
+    &-sm > .timu-btn > .anticon {
+      font-size: 14px;
+    }
+
+    .timu-btn + .timu-btn,
+    span + .timu-btn,
+    .timu-btn + span,
+    > span + span,
+    + .timu-btn,
+    + .timu-btn-group {
+      margin-left: -1px;
+    }
+
+    .timu-btn-primary + .timu-btn:not(.timu-btn-primary):not([disabled]) {
+      border-left-color: transparent;
+    }
+
+    .timu-btn {
+      border-radius: 0;
+    }
+
+    > .timu-btn:first-child,
+    > span:first-child > .timu-btn {
+      margin-left: 0;
+    }
+
+    > .timu-btn:only-child {
+      border-radius: 2px;
+    }
+
+    > span:only-child > .timu-btn {
+      border-radius: 2px;
+    }
+
+    > .timu-btn:first-child:not(:last-child),
+    > span:first-child:not(:last-child) > .timu-btn {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+
+    > .timu-btn:last-child:not(:first-child),
+    > span:last-child:not(:first-child) > .timu-btn {
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+  }
+
+  &-rtl,
+  &-group-rtl {
+    &.timu-btn-group .timu-btn + .timu-btn,
+    &.timu-btn + .timu-btn-group,
+    &.timu-btn-group span + .timu-btn,
+    &.timu-btn-group .timu-btn + span,
+    &.timu-btn-group > span + span,
+    &.timu-btn-group + .timu-btn,
+    &.timu-btn-group + .timu-btn-group {
+      margin-right: -1px;
+      margin-left: auto;
+    }
+  }
+
+  &:focus,
+  &:active {
+    > span {
+      position: relative;
+    }
+  }
+
+  > .anticon + span,
+  > span + .anticon {
+    margin-left: 8px;
+  }
+
+  &.timu-btn-background-ghost {
+    color: #fff;
+    border-color: #fff;
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      background: transparent;
+    }
+
+    &:hover,
+    &:focus {
+      color: #40a9ff;
+      border-color: #40a9ff;
+    }
+
+    &:active {
+      color: #096dd9;
+      border-color: #096dd9;
+    }
+
+    &[disabled] {
+      color: rgba(0, 0, 0, 0.25);
+      background: transparent;
+      border-color: #d9d9d9;
+    }
+  }
+
+  &-ghost.timu-btn-primary {
+    color: #1890ff;
+    border-color: #1890ff;
+    text-shadow: none;
+
+    @include innerA();
+
+    &:hover,
+    &:focus {
+      color: #40a9ff;
+      border-color: #40a9ff;
+
+      @include innerA();
+    }
+
+    &:active {
+      color: #096dd9;
+      border-color: #096dd9;
+
+      @include innerA();
+    }
+
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: rgba(0, 0, 0, 0.25);
+      border-color: #d9d9d9;
+      background: #f5f5f5;
+      text-shadow: none;
+      box-shadow: none;
+
+      @include innerA();
+    }
+  }
+
+  .timu-btn-background-ghost.timu-btn-danger {
+    color: #ff4d4f;
+    border-color: #ff4d4f;
+    text-shadow: none;
+  }
+
+  .timu-btn-background-ghost.timu-btn-danger > a:only-child {
+    color: currentColor;
+  }
+
+  .timu-btn-background-ghost.timu-btn-danger > a:only-child::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    content: '';
+  }
+
+  .timu-btn-background-ghost.timu-btn-danger:hover,
+  .timu-btn-background-ghost.timu-btn-danger:focus {
+    color: #ff7875;
+    border-color: #ff7875;
+  }
+
+  .timu-btn-background-ghost.timu-btn-danger:hover > a:only-child,
+  .timu-btn-background-ghost.timu-btn-danger:focus > a:only-child {
+    color: currentColor;
+  }
+
+  .timu-btn-background-ghost.timu-btn-danger:hover > a:only-child::after,
+  .timu-btn-background-ghost.timu-btn-danger:focus > a:only-child::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    content: '';
+  }
+
+  .timu-btn-background-ghost.timu-btn-danger:active {
+    color: #d9363e;
+    border-color: #d9363e;
+  }
+
+  .timu-btn-background-ghost.timu-btn-danger:active > a:only-child {
+    color: currentColor;
+  }
+
+  .timu-btn-background-ghost.timu-btn-danger:active > a:only-child::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    content: '';
+  }
+
+  .timu-btn-background-ghost.timu-btn-danger[disabled],
+  .timu-btn-background-ghost.timu-btn-danger[disabled]:hover,
+  .timu-btn-background-ghost.timu-btn-danger[disabled]:focus,
+  .timu-btn-background-ghost.timu-btn-danger[disabled]:active {
+    color: rgba(0, 0, 0, 0.25);
+    border-color: #d9d9d9;
+    background: #f5f5f5;
+    text-shadow: none;
+    box-shadow: none;
+  }
+
+  .timu-btn-background-ghost.timu-btn-danger[disabled] > a:only-child,
+  .timu-btn-background-ghost.timu-btn-danger[disabled]:hover > a:only-child,
+  .timu-btn-background-ghost.timu-btn-danger[disabled]:focus > a:only-child,
+  .timu-btn-background-ghost.timu-btn-danger[disabled]:active > a:only-child {
+    color: currentColor;
+  }
+
+  .timu-btn-background-ghost.timu-btn-danger[disabled] > a:only-child::after,
+  .timu-btn-background-ghost.timu-btn-danger[disabled]:hover > a:only-child::after,
+  .timu-btn-background-ghost.timu-btn-danger[disabled]:focus > a:only-child::after,
+  .timu-btn-background-ghost.timu-btn-danger[disabled]:active > a:only-child::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    content: '';
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous {
+    color: #ff4d4f;
+    border-color: #ff4d4f;
+    text-shadow: none;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous > a:only-child {
+    color: currentColor;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous > a:only-child::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    content: '';
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous:hover,
+  .timu-btn-background-ghost.timu-btn-dangerous:focus {
+    color: #ff7875;
+    border-color: #ff7875;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous:hover > a:only-child,
+  .timu-btn-background-ghost.timu-btn-dangerous:focus > a:only-child {
+    color: currentColor;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous:hover > a:only-child::after,
+  .timu-btn-background-ghost.timu-btn-dangerous:focus > a:only-child::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    content: '';
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous:active {
+    color: #d9363e;
+    border-color: #d9363e;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous:active > a:only-child {
+    color: currentColor;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous:active > a:only-child::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    content: '';
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous[disabled],
+  .timu-btn-background-ghost.timu-btn-dangerous[disabled]:hover,
+  .timu-btn-background-ghost.timu-btn-dangerous[disabled]:focus,
+  .timu-btn-background-ghost.timu-btn-dangerous[disabled]:active {
+    color: rgba(0, 0, 0, 0.25);
+    border-color: #d9d9d9;
+    background: #f5f5f5;
+    text-shadow: none;
+    box-shadow: none;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous[disabled] > a:only-child,
+  .timu-btn-background-ghost.timu-btn-dangerous[disabled]:hover > a:only-child,
+  .timu-btn-background-ghost.timu-btn-dangerous[disabled]:focus > a:only-child,
+  .timu-btn-background-ghost.timu-btn-dangerous[disabled]:active > a:only-child {
+    color: currentColor;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous[disabled] > a:only-child::after,
+  .timu-btn-background-ghost.timu-btn-dangerous[disabled]:hover > a:only-child::after,
+  .timu-btn-background-ghost.timu-btn-dangerous[disabled]:focus > a:only-child::after,
+  .timu-btn-background-ghost.timu-btn-dangerous[disabled]:active > a:only-child::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    content: '';
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link {
+    color: #ff4d4f;
+    border-color: transparent;
+    text-shadow: none;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link > a:only-child {
+    color: currentColor;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link > a:only-child::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    content: '';
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link:hover,
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link:focus {
+    color: #ff7875;
+    border-color: transparent;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link:hover > a:only-child,
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link:focus > a:only-child {
+    color: currentColor;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link:hover > a:only-child::after,
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link:focus > a:only-child::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    content: '';
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link:active {
+    color: #d9363e;
+    border-color: transparent;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link:active > a:only-child {
+    color: currentColor;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link:active > a:only-child::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    content: '';
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link[disabled],
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link[disabled]:hover,
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link[disabled]:focus,
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link[disabled]:active {
+    color: rgba(0, 0, 0, 0.25);
+    border-color: #d9d9d9;
+    background: #f5f5f5;
+    text-shadow: none;
+    box-shadow: none;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link[disabled] > a:only-child,
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link[disabled]:hover > a:only-child,
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link[disabled]:focus > a:only-child,
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link[disabled]:active > a:only-child {
+    color: currentColor;
+  }
+
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link[disabled] > a:only-child::after,
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link[disabled]:hover > a:only-child::after,
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link[disabled]:focus > a:only-child::after,
+  .timu-btn-background-ghost.timu-btn-dangerous.timu-btn-link[disabled]:active > a:only-child::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    content: '';
+  }
+
+  .timu-btn-two-chinese-chars::first-letter {
+    letter-spacing: 0.34em;
+  }
+
+  .timu-btn-two-chinese-chars > *:not(.anticon) {
+    margin-right: -0.34em;
+    letter-spacing: 0.34em;
+  }
+
+  .timu-btn-block {
+    width: 100%;
+  }
+
+  .timu-btn:empty {
+    display: inline-block;
+    width: 0;
+    visibility: hidden;
+    content: '\a0';
+  }
+
+  a.timu-btn {
+    padding-top: 0.01px !important;
+    line-height: 30px;
+  }
+
+  a.timu-btn-lg {
+    line-height: 38px;
+  }
+
+  a.timu-btn-sm {
+    line-height: 22px;
+  }
+
+  .timu-btn-rtl {
+    direction: rtl;
+  }
+
+  .timu-btn-group-rtl.timu-btn-group .timu-btn-primary:last-child:not(:first-child),
+  .timu-btn-group-rtl.timu-btn-group .timu-btn-primary + .timu-btn-primary {
+    border-right-color: #40a9ff;
+    border-left-color: #d9d9d9;
+  }
+
+  .timu-btn-group-rtl.timu-btn-group .timu-btn-primary:last-child:not(:first-child)[disabled],
+  .timu-btn-group-rtl.timu-btn-group .timu-btn-primary + .timu-btn-primary[disabled] {
+    border-right-color: #d9d9d9;
+    border-left-color: #40a9ff;
+  }
+
+  .timu-btn-rtl.timu-btn > .timu-btn-loading-icon .anticon {
+    padding-right: 0;
+    padding-left: 8px;
+  }
+
+  .timu-btn > .timu-btn-loading-icon:only-child .anticon {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .timu-btn-rtl.timu-btn > .anticon + span,
+  .timu-btn-rtl.timu-btn > span + .anticon {
+    margin-right: 8px;
+    margin-left: 0;
+  }
+}
